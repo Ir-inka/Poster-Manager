@@ -23,7 +23,7 @@ public class ProductManagerTest {
     MoviePoster movie15 = new MoviePoster(15, 8.1, "Ocean's Eleven", "crime", 2001);
 
 
-    @BeforeEach
+   /* @BeforeEach
     public void setUp() {
         manager.addMovie(movie1);
         manager.addMovie(movie2);
@@ -40,11 +40,10 @@ public class ProductManagerTest {
         manager.addMovie(movie13);
         manager.addMovie(movie14);
         manager.addMovie(movie15);
-    }
+    }*/
 
     @Test
     public void emptyList() {                              // пустой список
-        ProductManager manager = new ProductManager();
 
         MoviePoster[] expected = {};
         MoviePoster[] actual = manager.findAll();
@@ -53,7 +52,7 @@ public class ProductManagerTest {
 
     @Test
     public void showAll10Films() {                                //  посмотрим первые 10 фильмов из списка
-        ProductManager manager = new ProductManager();
+
         manager.addMovie(movie1);
         manager.addMovie(movie2);
         manager.addMovie(movie3);
@@ -71,7 +70,7 @@ public class ProductManagerTest {
 
     @Test
     public void addAndOutputMovies() {  // добавим 5 фильмов и выведем список из них
-        ProductManager manager = new ProductManager();
+
         manager.addMovie(movie11);
         manager.addMovie(movie12);
         manager.addMovie(movie13);
@@ -83,7 +82,23 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void theWholeList() {     // весь список фильмов (15 штук) в хронологическом порядке
+    public void theWholeList() {    // весь список фильмов (15 штук) в хронологическом порядке
+
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+        manager.addMovie(movie8);
+        manager.addMovie(movie9);
+        manager.addMovie(movie10);
+        manager.addMovie(movie11);
+        manager.addMovie(movie12);
+        manager.addMovie(movie13);
+        manager.addMovie(movie14);
+        manager.addMovie(movie15);
 
         MoviePoster[] expected = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13, movie14, movie15};
         MoviePoster[] actual = manager.findAll();
@@ -94,7 +109,7 @@ public class ProductManagerTest {
 
     @Test
     public void displayTheLast10Movies() {                                //  последние 10 фильмов в хронологическом порядке
-        ProductManager manager = new ProductManager();
+
         manager.addMovie(movie6);
         manager.addMovie(movie7);
         manager.addMovie(movie8);
@@ -113,7 +128,6 @@ public class ProductManagerTest {
 
     @Test
     public void displayTheLast2Films() {                               // последние 2 фильма в хронологическом порядке
-        ProductManager manager = new ProductManager();
 
         manager.addMovie(movie14);
         manager.addMovie(movie15);
@@ -149,7 +163,18 @@ public class ProductManagerTest {
 
 
     @Test
-    public void shouldFindLast() {     // последние 10 фильмов в обратном порядке
+    public void shouldFindLast() {   // последние 10 фильмов в обратном порядке
+
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+        manager.addMovie(movie8);
+        manager.addMovie(movie9);
+        manager.addMovie(movie10);
+        manager.addMovie(movie11);
+        manager.addMovie(movie12);
+        manager.addMovie(movie13);
+        manager.addMovie(movie14);
+        manager.addMovie(movie15);
 
         MoviePoster[] expected = {movie15, movie14, movie13, movie12, movie11, movie10, movie9, movie8, movie7, movie6};
         MoviePoster[] actual = manager.findLast();
@@ -159,7 +184,6 @@ public class ProductManagerTest {
 
     @Test
     public void find5LatestMovies() {                       // последние 5 фильмов в обратном порядке
-        ProductManager manager = new ProductManager(5);
 
         manager.addMovie(movie11);
         manager.addMovie(movie12);
@@ -174,7 +198,6 @@ public class ProductManagerTest {
 
     @Test
     public void findLatestMovies() {                                  // последние 2 фильма в обратном порядке
-        ProductManager manager = new ProductManager();
 
         manager.addMovie(movie14);
         manager.addMovie(movie15);
