@@ -6,13 +6,16 @@ public class ProductManager {
     private MoviePoster[] movies = new MoviePoster[0];
     private int limitMovie = 10;
 
+
     public ProductManager() {
 
     }
 
 
     public ProductManager(int limitMovie) {
+
         this.limitMovie = limitMovie;
+
 
     }
 
@@ -28,8 +31,10 @@ public class ProductManager {
     }
 
     public MoviePoster[] findAll() {
+
         return movies;
     }
+
 
     public MoviePoster[] findLast() {
         int resultLength;

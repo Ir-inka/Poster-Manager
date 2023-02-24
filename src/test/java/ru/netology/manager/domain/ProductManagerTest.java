@@ -1,7 +1,6 @@
 package ru.netology.manager.domain;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ProductManagerTest {
@@ -41,6 +40,92 @@ public class ProductManagerTest {
         manager.addMovie(movie14);
         manager.addMovie(movie15);
     }*/
+
+    @Test
+    public void moreLimit() {                 // В менеджере 12 фильмов, выводим лимит из 10(по умолчанию) последних фильмов в обратном порядке.
+
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+        manager.addMovie(movie8);
+        manager.addMovie(movie9);
+        manager.addMovie(movie10);
+        manager.addMovie(movie11);
+        manager.addMovie(movie12);
+
+        MoviePoster[] expected = {movie12, movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3};
+        MoviePoster[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void moviesUnderTheLimit() {        // В менеджере 6 фильмов, что меньше лимита по умолчанию(10), выводим 6 в обратном порядке.
+
+
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+        manager.addMovie(movie6);
+
+
+        MoviePoster[] expected = {movie6, movie5, movie4, movie3, movie2, movie1};
+        MoviePoster[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void theWholeList15() {
+        ProductManager manager = new ProductManager(15);    // весь список фильмов (15 штук) в обратном порядке
+
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+        manager.addMovie(movie8);
+        manager.addMovie(movie9);
+        manager.addMovie(movie10);
+        manager.addMovie(movie11);
+        manager.addMovie(movie12);
+        manager.addMovie(movie13);
+        manager.addMovie(movie14);
+        manager.addMovie(movie15);
+
+        MoviePoster[] expected = {movie15, movie14, movie13, movie12, movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        MoviePoster[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldFindLast() {   // последние 10 фильмов в обратном порядке (по умолчанию лимит 10 фильмов)
+
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+        manager.addMovie(movie8);
+        manager.addMovie(movie9);
+        manager.addMovie(movie10);
+        manager.addMovie(movie11);
+        manager.addMovie(movie12);
+        manager.addMovie(movie13);
+        manager.addMovie(movie14);
+        manager.addMovie(movie15);
+
+        MoviePoster[] expected = {movie15, movie14, movie13, movie12, movie11, movie10, movie9, movie8, movie7, movie6};
+        MoviePoster[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
 
     @Test
     public void emptyList() {                              // пустой список
@@ -161,26 +246,6 @@ public class ProductManagerTest {
 
     }
 
-
-    @Test
-    public void shouldFindLast() {   // последние 10 фильмов в обратном порядке
-
-        manager.addMovie(movie6);
-        manager.addMovie(movie7);
-        manager.addMovie(movie8);
-        manager.addMovie(movie9);
-        manager.addMovie(movie10);
-        manager.addMovie(movie11);
-        manager.addMovie(movie12);
-        manager.addMovie(movie13);
-        manager.addMovie(movie14);
-        manager.addMovie(movie15);
-
-        MoviePoster[] expected = {movie15, movie14, movie13, movie12, movie11, movie10, movie9, movie8, movie7, movie6};
-        MoviePoster[] actual = manager.findLast();
-        Assertions.assertArrayEquals(expected, actual);
-
-    }
 
     @Test
     public void find5LatestMovies() {                       // последние 5 фильмов в обратном порядке
